@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->smallInteger('status');
-            $table->unsignedBigInteger('author_id');
+            $table->smallInteger('status')->default('1');
+            $table->unsignedBigInteger('author_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index('author_id', 'author_id_idx');
 
