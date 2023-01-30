@@ -46,10 +46,17 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="mb-2">
-                            <label for="tag" class="form-label col-12">Теги</label>
-                            <select class="form-select w-100" name="tag" multiple aria-label="multiple select example">
-                                <option>Выберите теги</option>
+                        <div class="form-group">
+                            <label>Теги</label>
+                            <select class="select2" name="tag_ids[]" multiple="multiple"
+                                    data-placeholder="Выберите теги"
+                                    style="width: 100%;">
+                                @foreach($tags as $tag)
+                                    <option
+                                        {{is_array($post->tags->pluck('id')->toArray()) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? ' selected' : ''}}
+                                        value="{{$tag->id}}">{{$tag->name}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <input type="submit" class="btn btn-primary btn-block" value="Обновить">

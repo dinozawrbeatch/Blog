@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('frequency');
+            $table->unsignedBigInteger('frequency')->nullable()->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

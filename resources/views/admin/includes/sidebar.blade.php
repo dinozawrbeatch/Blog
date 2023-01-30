@@ -8,6 +8,12 @@
                         Посты
                     </p>
                 </a>
+            <li class="nav-item">
+                <a href="{{route('admin.tag.index')}}" class="nav-link">
+                    <p>
+                        Теги
+                    </p>
+                </a>
             </li>
         </ul>
     </div>

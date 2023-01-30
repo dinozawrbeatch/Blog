@@ -16,12 +16,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title d-flex mr-4">{{$post->title}}</h3>
-                                <a href="{{route('admin.post.edit', $post->id)}}">Изменить</a>
-                                <form class="ml-5" action="{{route('admin.post.delete', $post->id)}}" method="post">
+                            <div class="card-header col-12">
+                                <h3 class="card-title mr-4">{{$post->title}}</h3>
+                                <form class="col-12" action="{{route('admin.post.delete', $post->id)}}" method="post">
                                     @csrf
                                     @method('delete')
+                                    <a href="{{route('admin.post.edit', $post->id)}}">Изменить</a>
                                     <button class="text-danger border-0 bg-transparent" type="submit">
                                         Удалить
                                     </button>
@@ -38,7 +38,6 @@
                                         <td>Заголовок</td>
                                         <td>{{$post->title}}</td>
                                     </tr>
-
                                     <tr>
                                         <td>Контент</td>
                                         <td>{{$post->content}}</td>

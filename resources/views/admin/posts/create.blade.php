@@ -32,7 +32,7 @@
                             <input type="text" class="form-control" id="title" name="title"
                                    placeholder="Введите заголовок поста">
                             @error('title')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                            <div class="text-danger">Это поле необходимо заполнить</div>
                             @enderror
                         </div>
                         <div class="form-group">
@@ -44,10 +44,17 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="mb-2">
-                            <label for="tag" class="form-label col-12">Теги</label>
-                            <select class="form-select w-100" name="tag" multiple aria-label="multiple select example">
-                                <option>Выберите теги</option>
+                        <div class="form-group">
+                            <label>Теги</label>
+                            <select class="select2" name="tag_ids[]" multiple="multiple"
+                                    data-placeholder="Выберите теги"
+                                    style="width: 100%;">
+                                @foreach($tags as $tag)
+                                    <option
+                                        {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : ''}}
+                                        value="{{$tag->id}}">{{$tag->name}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <input type="submit" class="btn btn-primary btn-block" value="Добавить">

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('content');
             $table->smallInteger('status')->default('1');
             $table->unsignedBigInteger('author_id')->nullable();
+            $table->string('tag_ids')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
