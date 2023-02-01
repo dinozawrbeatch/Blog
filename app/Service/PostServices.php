@@ -37,6 +37,8 @@ class PostServices
             $post->update($data);
             if (isset($tagIds)) {
                 $post->tags()->sync($tagIds);
+            } else {
+                $post->tags()->detach();
             }
             DB::commit();
         } catch (\Exception) {

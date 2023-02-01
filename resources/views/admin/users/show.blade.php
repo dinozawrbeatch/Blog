@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Посты</h1>
+                        <h1 class="m-0">Тег</h1>
                     </div>
                 </div>
             </div>
@@ -16,13 +16,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header ">
-                                <h3 class="card-title mr-4">{{$post->title}}</h3>
-                                <form class="col-12" action="{{route('admin.post.delete', $post->id)}}" method="post">
+                            <div class="card-header col-12">
+                                <h3 class="card-title mr-4">{{$user->name}}</h3>
+                                <form action="{{route('admin.user.delete', $user->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{route('admin.post.edit', $post->id)}}">Изменить</a>
-                                    <button class="text-danger border-0 bg-transparent" type="submit">
+                                    <a class="col-12" href="{{route('admin.user.edit', $user->id)}}">Изменить</a>
+                                    <button class="text-danger  border-0 bg-transparent" type="submit">
                                         Удалить
                                     </button>
                                 </form>
@@ -32,15 +32,14 @@
                                     <tbody>
                                     <tr>
                                         <td>ID</td>
-                                        <td>{{$post->id}}</td>
+                                        <td>{{$user->id}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Заголовок</td>
-                                        <td>{{$post->title}}</td>
+                                        <td>Имя</td>
+                                        <td>{{$user->name}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Контент</td>
-                                        <td>{{$post->content}}</td>
+                                        <td>Электронная почта</td>
+                                        <td>{{$user->email}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

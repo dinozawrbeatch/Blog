@@ -32,7 +32,7 @@
                             <input type="text" class="form-control" id="name" name="name"
                                    placeholder="Введите название тега">
                             @error('name')
-                            <div class="text-danger">Это поле необходимо заполнить</div>
+                            <div class="text-danger">{{$message}}</div>
                             @enderror
                         </div>
                         <input type="submit" class="btn btn-primary btn-block" value="Добавить">
