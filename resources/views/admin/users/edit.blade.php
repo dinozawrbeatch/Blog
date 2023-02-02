@@ -6,9 +6,9 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Редактирование профиля</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
         <section class="content">
             <div class="container-fluid">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Роль</label>
-                                <select class="form-control" name="role_id">
+                                <select class="form-control" name="role">
                                     @foreach($roles as $id => $role)
                                         <option value="{{$id}}"
                                             {{$id == $user->role ? ' selected' : ''}}>

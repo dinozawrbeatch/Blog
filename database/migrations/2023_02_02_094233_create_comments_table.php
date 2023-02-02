@@ -13,16 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post_tag', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->string('content');
+            $table->unsignedSmallInteger('status');
+            $table->string('author');
+            $table->string('email');
+            $table->string('url');
             $table->unsignedBigInteger('post_id');
-            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
 
-            $table->index('post_id', 'pt_post_id_idx');
-            $table->index('user_id', 'pt_tag_id_idx');
+            $table->index('post_id', 'post_id_idx');
 
-            $table->foreign('post_id', 'pt_post_id_fk')->references('id')->on('posts');
-            $table->foreign('post_id', 'pt_tag_id_fk')->references('id')->on('tags');
+            $table->foreign('post_id', 'post_id_fk')->references('id')->on('posts');
         });
     }
 
@@ -33,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('comments');
     }
 };

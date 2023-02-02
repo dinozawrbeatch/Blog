@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UpdateController extends Controller
 {
@@ -12,6 +13,6 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
         $user->update($data);
-        return view('admin.tags.show', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 }

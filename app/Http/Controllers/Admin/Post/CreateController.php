@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
-use App\Http\Controllers\Controller;
 use App\Models\Tag;
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class CreateController extends BaseController
 {
