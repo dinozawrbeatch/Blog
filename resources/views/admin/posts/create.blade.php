@@ -2,7 +2,6 @@
 @section('content')
 
     <div class="content-wrapper">
-
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -41,18 +40,25 @@
                                     style="width: 100%;">
                                 @foreach($tags as $tag)
                                     <option
-                                        {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : ''}}
+                                        {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : '' }}
                                         value="{{$tag->id}}">{{$tag->name}}
                                     </option>
                                 @endforeach
                             </select>
-
                         </div>
-                        <input type="submit" class="btn btn-primary btn-block" value="Добавить">
+                        <div class="form-group">
+                            <label for="status" class="form-label d-flex">Выберите статус поста</label>
+                            <select class="form-select col-12" name="status" aria-label="Default select example">
+                                <option value="1">В черновик</option>
+                                <option value="2">Опубликовать</option>
+                                <option value="3">В архив</option>
+                            </select>
+                        </div>
+                        <input type="hidden" value="{{ auth()->user()->id }}" name="author_id">
+                        <input type="submit" class="btn btn-primary btn-block" value="Опубликовать">
                     </form>
                 </div>
             </div>
         </section>
     </div>
-    <!-- /.content-wrapper -->
 @endsection

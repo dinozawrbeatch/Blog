@@ -7,13 +7,16 @@
         <section class="posts-section">
             <div class="row">
                 <div class="fetured-post blog-post" data-aos="fade-right">
-                    <a href="#" class="blog-post-permalink">
+                    <a href="{{ route('post.show', $post->id) }}" class="blog-post-permalink">
                         <h6 class="blog-post-title">{{ $post->title }}</h6>
                     </a>
                 </div>
             </div>
         </section>
         @endforeach
+        <div class="mx-auto ">
+            {{ $posts->links() }}
+        </div>
     </div>
 </main>
 @endsection

@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $table = 'posts';
     protected $guarded = false;
+
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
     const STATUS_ARCHIVED = 3;
@@ -24,11 +25,6 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->belongsToMany(
-            Comment::class,
-            'comment_to_post',
-            'post_id',
-            'comment_id'
-        );
+        return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 }

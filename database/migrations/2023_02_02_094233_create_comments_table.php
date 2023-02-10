@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
-            $table->unsignedSmallInteger('status');
+            $table->text('content');
+            $table->unsignedSmallInteger('status')->default(1);
             $table->string('author');
             $table->string('email');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->unsignedBigInteger('post_id');
             $table->timestamps();
 

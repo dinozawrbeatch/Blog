@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Post\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,11 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'content' => 'required|string',
-            'tag_ids' => 'nullable|array',
-            'tag_ids.*' => 'nullable|integer|exists:tags,id',
-            'author_id' => 'required|integer|exists:users,id'
+            'content' => 'required|string'
         ];
     }
 }

@@ -14,15 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Main'], function () {
-    Route::get('/', 'IndexController');
+    Route::get('/', 'IndexController')->name('main.index');
 });
-//Personal panel
-Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'admin']], function () {
-    Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
-        Route::get('/', 'IndexController')->name('personal.main.index');
-    });
-    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {
-        Route::get('/', 'IndexController')->name('personal.comment.index');
+Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function () {
+    Route::get('/', 'IndexController')->name('post.index');
+    Route::get('/{post}', 'ShowController')->name('post.show');
+
+    Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
+        Route::post('/', 'StoreController')->name('post.comment.store');
     });
 });
 
@@ -34,6 +33,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     //Post
     Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function () {
         Route::get('/', 'IndexController')->name('admin.post.index');
+        Route::get('/draft', 'DraftController')->name('admin.post.draft');
+        Route::get('/published', 'PublishedController')->name('admin.post.published');
+        Route::get('/archived', 'ArchivedController')->name('admin.post.archived');
         Route::get('/create', 'CreateController')->name('admin.post.create');
         Route::post('/', 'StoreController')->name('admin.post.store');
         Route::get('/{post}', 'ShowController')->name('admin.post.show');
@@ -60,6 +62,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
         Route::get('/{user}/edit', 'EditController')->name('admin.user.edit');
         Route::patch('/{user}', 'UpdateController')->name('admin.user.update');
         Route::delete('/{user}', 'DeleteController')->name('admin.user.delete');
+    });
+    //Comments
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comments'], function () {
+        Route::get('/', 'IndexController')->name('admin.comment.index');
+        Route::patch('/{comment}', 'UpdateController')->name('admin.comment.update');
+        Route::get('/{comment}', 'ShowController')->name('admin.comment.show');
+        Route::delete('/{comment}', 'DeleteController')->name('admin.comment.delete');
     });
 });
 

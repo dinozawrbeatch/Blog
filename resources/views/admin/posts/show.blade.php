@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header ">
+                            <div class="card-header">
                                 <h3 class="card-title mr-4">{{$post->title}}</h3>
                                 <form class="col-12" action="{{route('admin.post.delete', $post->id)}}" method="post">
                                     @csrf

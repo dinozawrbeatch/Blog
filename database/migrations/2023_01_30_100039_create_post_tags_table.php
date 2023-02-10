@@ -19,10 +19,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->index('post_id', 'pt_post_id_idx');
-            $table->index('user_id', 'pt_tag_id_idx');
+            $table->index('tag_id', 'pt_tag_id_idx');
 
             $table->foreign('post_id', 'pt_post_id_fk')->references('id')->on('posts');
-            $table->foreign('post_id', 'pt_tag_id_fk')->references('id')->on('tags');
+            $table->foreign('tag_id', 'pt_tag_id_fk')->references('id')->on('tags');
         });
     }
 

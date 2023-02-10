@@ -13,6 +13,7 @@ class ShowController extends BaseController
     public function __invoke(Post $post)
     {
         $tags = Tag::all();
+
         return view('admin.posts.show', compact('post', 'tags'));
     }
 }
