@@ -17,11 +17,32 @@
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-end">
-            <div class="nav-item mr-3">
-                <a class="text-black-50" href="{{ route('login') }}">Вход</a>
+            <li class="nav-item text-black-50 d-flex mx-auto">
+                <h3><a href="{{ route('main.index') }}">Блог</a></h3>
+            </li>
+            <li class="nav-item text-black-50 d-flex mx-auto">
+                <h3><a href="{{ route('tag.index') }}">Теги</a></h3>
+            </li>
+            <div class="nav-item mr-3 d-flex flex-row">
+                @auth()
+                    @if(auth()->user()->role == 0)
+                        <form action="{{ route('admin.main.index') }}" class="mr-4">
+                            <input class="btn btn-primary" type="submit" value="Админ панель">
+                        </form>
+                    @endif
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <input class="btn btn-outline-danger" type="submit" value="Выйти">
+                    </form>
+                @endauth
+                @guest()
+                    <a class="text-black-50" href="{{ route('login') }}">Вход</a>
+                @endguest
             </div>
             <div class="nav-item ">
-                <a class="text-black-50" href="{{ route('register') }}">Регистрация</a>
+                @guest()
+                    <a class="text-black-50" href="{{ route('login') }}">Регистрация</a>
+                @endguest
             </div>
         </nav>
     </div>

@@ -34,7 +34,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-2">
                             <label>Теги</label>
                             <select class="select2" name="tag_ids[]" multiple="multiple"
                                     data-placeholder="Выберите теги"
@@ -45,6 +45,14 @@
                                         value="{{$tag->id}}">{{$tag->name}}
                                     </option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="form-label d-flex">Выберите статус поста</label>
+                            <select class="form-select col-12" name="status" aria-label="Default select example">
+                                <option value="1">В черновик</option>
+                                <option value="2">Опубликовать</option>
+                                <option value="3">В архив</option>
                             </select>
                         </div>
                         <input type="submit" class="btn btn-primary btn-block" value="Обновить">

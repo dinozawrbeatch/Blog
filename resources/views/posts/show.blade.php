@@ -4,7 +4,7 @@
         <div class="container">
             <h1 class="edica-page-title" data-aos="fade-up">{{ $post->title }}</h1>
             <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200">{{ $date->translatedFormat('F') }}
-                 {{$date->day}} • {{ $date->format('H:i:s') }} • Featured • {{$post->comments->count()}} комментариев</p>
+                 {{$date->day}} • {{ $date->format('H:i:s') }}</p>
             <section class="post-content">
                 <div class="row">
                     <div class="col-lg-9 mx-auto" data-aos="fade-up">
@@ -12,6 +12,7 @@
                     </div>
                 </div>
             </section>
+            <h2 class="mb-3">Комментарии</h2>
             <section class="comment-list mb-4">
                 @foreach($post->comments as $comment)
                     @if($comment->status == 2)
@@ -29,6 +30,7 @@
                     @endif
                 @endforeach
             </section>
+            @auth()
             <section class="comment-section">
                 <h2 class="section-title mb-5" data-aos="fade-up">Отправить комментарий</h2>
                 <form action="{{ route('post.comment.store', $post->id) }}" method="post">
@@ -47,6 +49,7 @@
                     </div>
                 </form>
             </section>
+            @endauth
         </div>
     </main>
 @endsection

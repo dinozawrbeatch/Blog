@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $comments = Comment::orderBy('status', 'ASC')->paginate(10);
+        $comments = Comment::orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.comments.index', compact('comments'));
     }
 }

@@ -28,6 +28,7 @@ class UpdateRequest extends FormRequest
             'content' => 'required|string',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable|integer|exists:tags,id',
+            'status' => 'required|integer'
         ];
     }
 }

@@ -25,6 +25,14 @@ Route::group(['namespace' => 'Post', 'prefix' => 'posts'], function () {
     });
 });
 
+Route::group(['namespace' => 'Tag', 'prefix' => 'tags'], function () {
+    Route::get('/', 'IndexController')->name('tag.index');
+
+    Route::group(['namespace' => 'Post', 'prefix' => '{tag}/posts'], function () {
+        Route::get('/', 'IndexController')->name('tag.post.index');
+    });
+});
+
 //Admin panel
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::group(['namespace' => 'Main'], function () {
